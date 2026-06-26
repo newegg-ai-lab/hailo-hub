@@ -137,25 +137,74 @@
     letter-spacing: 0.04em;
   }
 
-  /* Callout */
+  /* Callout Banner */
   .callout {
     background: #0d1a2e;
-    border: 1px solid #1a3050;
-    border-left: 3px solid #4f8ef7;
-    border-radius: 0 12px 12px 0;
-    padding: 20px 24px;
+    border: 1px solid #4f8ef7;
+    border-radius: 16px;
+    padding: 40px 48px;
     margin-bottom: 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .callout::before {
+    content: '';
+    position: absolute;
+    top: -60px; left: 50%; transform: translateX(-50%);
+    width: 500px; height: 200px;
+    background: radial-gradient(ellipse, rgba(79,142,247,0.1) 0%, transparent 70%);
+    pointer-events: none;
   }
   .callout-title {
-    font-size: 0.88rem;
-    font-weight: 600;
-    color: #93c5fd;
-    margin-bottom: 8px;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #f1f5f9;
+    margin-bottom: 16px;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
   }
+  .callout-title span { color: #4f8ef7; }
   .callout p {
-    font-size: 0.85rem;
+    font-size: 0.92rem;
     color: #94a3b8;
-    line-height: 1.65;
+    line-height: 1.7;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  /* Use cases */
+  .usecases-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 14px;
+    margin-bottom: 48px;
+  }
+  .usecase-card {
+    background: #111827;
+    border: 1px solid #1e2d45;
+    border-radius: 14px;
+    padding: 22px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: border-color 0.2s;
+  }
+  .usecase-card:hover { border-color: #2d4a72; }
+  .usecase-icon {
+    font-size: 24px;
+    margin-bottom: 4px;
+  }
+  .usecase-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #f1f5f9;
+    line-height: 1.35;
+  }
+  .usecase-desc {
+    font-size: 0.82rem;
+    color: #64748b;
+    line-height: 1.6;
   }
 
   /* Stack cards */
@@ -343,13 +392,13 @@
 <div class="hero">
   <div class="hero-badge">Now Available &mdash; Windows</div>
   <h1>Hailo <span>Hub</span></h1>
-  <div class="hero-sub">Standalone Windows AI Hub &mdash; Powered by Hailo-10H</div>
+  <div class="hero-sub">Private AI Hub on Windows &mdash; Powered by Hailo-10H</div>
   <div class="hero-sub" style="font-size:0.9rem;margin-top:6px;">
     Chat &nbsp;&middot;&nbsp; Vision &nbsp;&middot;&nbsp; Object Detection &nbsp;&middot;&nbsp; Speech &nbsp;&mdash;&nbsp; All on-device. No cloud.
   </div>
   <div class="hero-hardware">
     <svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h12M6 14h8"/></svg>
-    ASUS UGen300 &nbsp;&middot;&nbsp; Hailo-10H &nbsp;&middot;&nbsp; 40 TOPS &nbsp;&middot;&nbsp; 8 GB LPDDR4
+    ASUS UGen300 &nbsp;&middot;&nbsp; Hailo-10H
   </div>
 </div>
 
@@ -367,7 +416,7 @@
     </div>
     <div class="stat-card">
       <div class="stat-value">Low Cost</div>
-      <div class="stat-label">Total Hardware Cost</div>
+      <div class="stat-label">No Cloud Fees &middot; Low Total Hardware Cost</div>
     </div>
     <div class="stat-card">
       <div class="stat-value">0</div>
@@ -375,48 +424,91 @@
     </div>
   </div>
 
+
+  <!-- Use cases -->
+  <div class="section-label">Real-World Use Cases</div>
+  <div class="usecases-grid">
+
+    <div class="usecase-card">
+      <div class="usecase-icon">📦</div>
+      <div class="usecase-title">Touchless Returns Triage</div>
+      <div class="usecase-desc">A returned item arrives and gets automatically scanned for damage, labeled, and routed — all before a human touches it. Damage is detected visually, the RMA number is read off the label, and the system decides where it goes.</div>
+    </div>
+
+    <div class="usecase-card">
+      <div class="usecase-icon">🚚</div>
+      <div class="usecase-title">Package Integrity Gate</div>
+      <div class="usecase-desc">Every outbound box passes a camera before leaving the dock. Crushed corners, torn tape, and compromised packaging are flagged automatically — stopping damaged shipments before they reach the customer.</div>
+    </div>
+
+    <div class="usecase-card">
+      <div class="usecase-icon">🦺</div>
+      <div class="usecase-title">PPE &amp; Safety Monitoring</div>
+      <div class="usecase-desc">Automatically detect whether workers in restricted zones are wearing required safety gear. Get real-time alerts without a supervisor needing to physically walk the floor.</div>
+    </div>
+
+    <div class="usecase-card">
+      <div class="usecase-icon">🎙️</div>
+      <div class="usecase-title">Multilingual Meeting Transcription</div>
+      <div class="usecase-desc">Record a meeting or vendor call and get a full transcript — translated into any language — entirely offline. No audio ever leaves your building.</div>
+    </div>
+
+    <div class="usecase-card">
+      <div class="usecase-icon">🔍</div>
+      <div class="usecase-title">Visual Product Q&amp;A</div>
+      <div class="usecase-desc">Take a photo of a product, a damaged item, or a shelf and ask questions about it in plain language. Instantly get answers without needing a specialist on hand.</div>
+    </div>
+
+    <div class="usecase-card">
+      <div class="usecase-icon">📋</div>
+      <div class="usecase-title">Private Document Assistant</div>
+      <div class="usecase-desc">Ask questions about internal manuals, policies, or product specs in plain language. Your documents stay on your hardware — nothing gets sent to an external AI service.</div>
+    </div>
+
+  </div>
+
+  
   <!-- Context callout -->
   <div class="callout">
-    <div class="callout-title">Why Hailo Hub Exists</div>
+    <div class="callout-title">The First App to Unlock What Your UGen300 Can Do. <span>No $3,000 GPU Required.</span></div>
     <p>
-      The ASUS UGen Utility&mdash;the official graphical tool for model validation&mdash;is currently listed
-      as &ldquo;Coming Soon&rdquo; on the ASUS product page and has not yet been released for Windows.
-      There is no integrated Windows application from Hailo that provides a unified interface for running
-      local generative AI workloads on the Hailo-10H accelerator.
-      <strong style="color:#e2e8f0;"> Hailo Hub fills that gap today.</strong>
+      Dedicated AI workstations run $3,000 or more. Cloud AI bills you every month. The UGen300 gives you
+      the same on-device inference power at a fraction of either &mdash; but until now, no Windows app existed
+      to actually use it. Hailo Hub is the first: chat, vision, object detection, and speech transcription,
+      all in one place, the moment you plug in.
     </p>
   </div>
 
   <!-- Feature cards -->
-  <div class="section-label">AI Stack</div>
+  <div class="section-label">What You Get</div>
   <div class="stack-grid">
 
     <div class="stack-card">
       <div class="stack-icon" style="background:rgba(139,92,246,0.12); border:1px solid rgba(139,92,246,0.25);">&#x1F4AC;</div>
       <div class="stack-card-name">LLM Chat</div>
       <div class="stack-card-desc">Local AI assistant for conversational Q&amp;A, reasoning, and writing&mdash;runs entirely on the Hailo-10H NPU.</div>
-      <div class="stack-card-model">Qwen2-1.5B-Instruct &middot; 1.6 GB</div>
+      <div class="stack-card-model">Qwen2-1.5B-Instruct</div>
     </div>
 
     <div class="stack-card">
       <div class="stack-icon" style="background:rgba(79,142,247,0.12); border:1px solid rgba(79,142,247,0.25);">&#x1F441;</div>
-      <div class="stack-card-name">VLM Q&amp;A</div>
-      <div class="stack-card-desc">Upload or capture an image and ask questions in natural language. Multi-turn conversation with image context.</div>
-      <div class="stack-card-model">Qwen2-VL-2B-Instruct &middot; 3.1 GB</div>
+      <div class="stack-card-name">Image Analysis</div>
+      <div class="stack-card-desc">Upload an image and ask questions in natural language. Multi-turn conversation with full image context.</div>
+      <div class="stack-card-model">Qwen2-VL-2B-Instruct</div>
     </div>
 
     <div class="stack-card">
-      <div class="stack-icon" style="background:rgba(20,184,166,0.12); border:1px solid rgba(20,184,166,0.25);">&#x1F50D;</div>
-      <div class="stack-card-name">VLM Detect</div>
-      <div class="stack-card-desc">Real-time object detection and scene understanding powered by the vision language model on-device.</div>
-      <div class="stack-card-model">Qwen2-VL-2B-Instruct &middot; 3.1 GB</div>
+      <div class="stack-icon" style="background:rgba(20,184,166,0.12); border:1px solid rgba(20,184,166,0.25);">&#x1F3AF;</div>
+      <div class="stack-card-name">Image Detection</div>
+      <div class="stack-card-desc">Point a camera or upload an image and instantly identify objects on-screen — each one labeled and highlighted in real time.</div>
+      <div class="stack-card-model">YOLOv8s</div>
     </div>
 
     <div class="stack-card">
       <div class="stack-icon" style="background:rgba(245,158,11,0.12); border:1px solid rgba(245,158,11,0.25);">&#x1F3A4;</div>
       <div class="stack-card-name">Speech-to-Text</div>
       <div class="stack-card-desc">Private, offline voice transcription and translation. Record from microphone, get timestamped segments.</div>
-      <div class="stack-card-model">Whisper-Small &middot; 387 MB</div>
+      <div class="stack-card-model">Whisper-Small</div>
     </div>
 
   </div>
@@ -466,6 +558,7 @@
         <div style="text-align:center;">
           <div style="font-size:0.72rem;color:#14b8a6;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:6px;">Vision</div>
           <div style="font-size:0.8rem;color:#64748b;">Image + text &#x2192; VLM &#x2192; Answer</div>
+          <div style="font-size:0.8rem;color:#64748b;margin-top:4px;">Image &#x2192; YOLO &#x2192; Detections</div>
         </div>
         <div style="text-align:center;">
           <div style="font-size:0.72rem;color:#f59e0b;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:6px;">Audio</div>
@@ -499,15 +592,14 @@
     <div class="benefit-content">
       <h3>One App &mdash; Chat, Vision, Speech</h3>
       <p>
-        A single Streamlit interface consolidates all AI workloads. Switch between LLM chat,
-        visual Q&amp;A, object detection, and speech transcription from the sidebar.
-        One VDevice is held open for the session; models are swapped on demand with a
-        30&ndash;60 second load time. No separate tools, no configuration.
+        A single purpose-built web interface consolidates all AI workloads. Switch between LLM chat,
+        image analysis, object detection, and speech transcription from the sidebar.
+        Models are swapped on demand — no separate tools, no configuration, no command line required.
       </p>
       <span class="feature-pill">Unified interface</span>
-      <span class="feature-pill">Single port localhost:8502</span>
       <span class="feature-pill">Hot model switching</span>
-      <span class="feature-pill">Streamlit 1.58</span>
+      <span class="feature-pill">FastAPI backend</span>
+      <span class="feature-pill">Runs at localhost:8000</span>
     </div>
   </div>
 
@@ -550,9 +642,9 @@
       <div class="hw-card-sub">387 MB HEF</div>
     </div>
     <div class="hw-card">
-      <div class="hw-card-label">Cost</div>
-      <div class="hw-card-value">Low Cost</div>
-      <div class="hw-card-sub">Total hardware investment</div>
+      <div class="hw-card-label">Detection</div>
+      <div class="hw-card-value">YOLOv8s</div>
+      <div class="hw-card-sub">13 MB HEF</div>
     </div>
   </div>
 
